@@ -1,6 +1,6 @@
-# Word Embedding Project
-
-This is a small and and simple word embedding prioject.
+# Simple Word Embedding
+A minimal, from-scratch implementation of a word embedding system.
+This project intentionally avoids popular libraries to provide a deeper, hands-on understanding of how embedding models work internally.
 
 The project currently focuses on the first preprocessing steps that are usually needed before training a model:
 
