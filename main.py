@@ -1,3 +1,5 @@
+import random
+
 from text_preprocessor import TextPreprocessor
 from training_data import TrainingDataGenerator
 from embedding_model import EmbeddingModel
@@ -40,6 +42,24 @@ def main():
     print(model.get_vector(word_to_id["king"]))
 
     print("\nVector for 'queen':")
+    print(model.get_vector(word_to_id["queen"]))
+
+    # Part 4 - Simplified Learning from pairs
+    EPOCHS = 100
+    LEARNING_RATE = 0.01
+
+    print(f"\nTraining for {EPOCHS} epochs (learning rate = {LEARNING_RATE})...")
+    for epoch in range(1, EPOCHS + 1):
+        random.shuffle(pairs)
+        for center, context in pairs:
+            model.train_on_pair(center, context, learning_rate=LEARNING_RATE)
+        if epoch % 10 == 0:
+            print(f"  Epoch {epoch}/{EPOCHS} done")
+
+    print("\nVector for 'king' after training:")
+    print(model.get_vector(word_to_id["king"]))
+
+    print("\nVector for 'queen' after training:")
     print(model.get_vector(word_to_id["queen"]))
 
 
